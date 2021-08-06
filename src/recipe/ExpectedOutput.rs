@@ -17,6 +17,9 @@ pub struct ExpectedOutput {
     countPerPostcodeAndTime: CountPerPostcodeAndTime,
     #[serde(rename(serialize = "match_by_name"))]
     sortedRecipeNames: Vec<String>,
+
+    #[serde(rename(serialize = "total_json_objects"))]
+    totalObjects: i64,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -50,6 +53,7 @@ pub fn getExpectedOutput(
     deliveriesCountPerPostcode: &HashMap<String, i32>,
     customPostcodeDeliveryTime: &CustomPostcodeDeliveryTime,
     filteredRecipeNames: &mut Vec<String>,
+    totalObjects: i64,
 ) -> ExpectedOutput {
     filteredRecipeNames.sort();
 
@@ -69,6 +73,7 @@ pub fn getExpectedOutput(
             deliveryCount,
         ),
         sortedRecipeNames: filteredRecipeNames.to_owned(),
+        totalObjects,
     };
 
     expectedOutput

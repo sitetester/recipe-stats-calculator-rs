@@ -33,7 +33,10 @@ impl StatsCalculator {
         let mut deliveriesCountPerPostcode: HashMap<String, i32> = HashMap::new();
         let mut filteredRecipeNames: Vec<String> = vec![];
 
+        let mut totalObjects = 0;
         for recipeData in rx {
+            totalObjects += 1;
+
             self.calculateCountPerRecipe(recipeData.recipe.as_str(), &mut countPerRecipe);
             self.calculateCountPerPostcode(recipeData.postcode.as_str(), &mut countPerPostcode);
             self.calculateDeliveriesCountPerPostcode(&recipeData, &mut deliveriesCountPerPostcode);
@@ -46,6 +49,7 @@ impl StatsCalculator {
             &deliveriesCountPerPostcode,
             &self.customPostcodeDeliveryTime,
             &mut filteredRecipeNames,
+            totalObjects,
         )
     }
 
