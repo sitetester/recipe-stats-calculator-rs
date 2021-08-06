@@ -1,0 +1,5 @@
+.DS_Store
+.idea
+temp
+target
+/recipe-stats-calculator-rs.iml
