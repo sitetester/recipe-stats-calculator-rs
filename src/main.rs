@@ -22,7 +22,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let statsCalculator = StatsCalculator {
         customPostcodeDeliveryTime: CustomPostcodeDeliveryTime {
-            postcode: "10224".to_string(),
+            postcode: "10120".to_string(),
             from: 10,
             to: 3,
         },
