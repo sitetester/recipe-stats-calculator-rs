@@ -14,7 +14,6 @@ pub struct StatsLoader {}
 
 impl StatsLoader {
     pub fn load(path: &str, tx: Sender<RecipeData>) -> Result<(), Box<dyn std::error::Error>> {
-        // let str = fs::read_to_string(path)?;
         let reader = BufReader::new(File::open(path)?);
         for recipe in Self::iter_json_array(reader) {
             let recipe: RecipeData = recipe.unwrap();
